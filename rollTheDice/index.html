@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roll The Dice game</title>
+    <link rel="stylesheet" href="styles.css" >
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="winner_display" id ="victory_screen">
+            <h1>!!! Winner of the Roll The Dice game is !!!</h1>
+            <h2 id="winner_name"></h2>
+
+            <button class="button" id = "reset_winner">Reset</button>
+        </div>
+        
+        <div class="game_display" id ="game_display">
+
+            <h1 class="heading"><span>Roll The Dice</span></h1>
+
+            <div class="game_info">
+
+                <div class="player">
+                    <input class="input_tag" type="text" placeholder="Player 1" id="pl1_name" value="Player 1" >
+                    <div class="pl_saved_score" id="pl1_saved_score" >0</div>
+                    <div class="current_score_section">
+                        <div class="pl_score" id="pl1_current_score" >0</div>
+                        <p class="current_score_heading">Current Score</p>
+                    </div>
+                </div>
+
+                
+                <div id ='parent' class="dice-container"></div>
+                
+
+                <div class="player">
+                    <input class="input_tag" type="text" placeholder="Player 2" id="pl2_name" value="Player 2">
+                    <div class="pl_saved_score" id="pl2_saved_score" >0</div>
+                    <div class='current_score_section'>
+                        <div class="pl_score" id="pl2_current_score" >0</div>
+                        <p class="current_score_heading">Current Score</p>
+                    </div>
+            
+                </div>
+
+            </div>
+
+            <div class="game_control">
+                <button class ="button" id="roll_dice">Roll Dice</button>
+                <button class ="button" id="save_button">Save Score</button>
+            </div>
+
+            <div class="reset_container">
+                <button class ="button" id="reset">Reset</button>
+            </div>
+
+        </div>
+
+    </div>
+    
+    <script src="./index.js"></script>
+</body>
+</html>
