@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz game</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="/index.js" defer></script>
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <div class="question_container">
+            <div class="timer_and_score">
+                <div id="timer">15</div>
+                <p>: Time</p>
+                <p>Score :</p>
+                <div id="score">0</div>
+            </div>
+            <div class="questions">
+            
+            </div>
+                <button class="btn" id="next">Next</button>
+            
+        </div>
+
+        <div class="container">
+            <h1 id="heading"><img src="/icons8-quiz-100.png"> Quiz Game <img src="/icons8-quiz-100.png"></h1>
+
+            <h2 id="heading_category"> Choose Category :</h2>
+
+            <select name="categories" id="categories" class="drop_down">
+                <option value="">Category</option>
+                <option value="General Knowledge">General Knowledge 🧠</option>
+                <option value="Books">Books 📚</option>
+                <option value="Films">Films 🎥</option>
+                <option value="Music">Music 🎸</option>
+                <option value="TeleVision">TeleVision 📺</option>
+                <option value="Video Games">Video Games 🎮</option>
+                <option value="Mythology">Mythology 🪽</option>
+            </select>
+    
+            <h2 id="heading_level">Choose Difficulty :</h2>
+
+            <select name="levels" id="levels" class="drop_down">
+                <option value="">Level</option>
+                <option value="easy">Easy 😙</option>
+                <option value="medium">Medium 🤔</option>
+                <option value="hard">Hard 🤯</option>
+            </select>
+      
+            <button class="btn"  id="start_btn">Start Quiz</button>
+        </div>
+
+        <div class="end_screen_container">
+            <div class="end_screen">
+                <p id="score_heading">Total score :-</p>
+                <div id="final_score"></div>
+                <button class="btn" id="play_again">Play Again</button>
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+</html>
