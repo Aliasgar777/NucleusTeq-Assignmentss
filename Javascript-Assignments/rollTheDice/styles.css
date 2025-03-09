@@ -16,9 +16,11 @@
     width: 100vw;
     align-items: center;
     background: rgb(2,0,36);
-    /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 22%, rgba(6,84,170,1) 59%, rgba(0,183,255,1) 100%); */
-    background-image: url('https://img.freepik.com/free-photo/colorful-duo-tone-background_23-2148569177.jpg?t=st=1741089570~exp=1741093170~hmac=50bb576b29641521393c9f91b5e4159c9d0ad0b47bc83ea702ffc98e1fd84601&w=2000');
+    background-image: url('./bgImg.jpg');
     background-position-x: center; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .winner_display{
@@ -26,10 +28,13 @@
     flex-direction: column;
     height: 100vh;
     width: 100vw;
-    background-image: url('https://img.freepik.com/free-photo/colorful-duo-tone-background_23-2148569177.jpg?t=st=1741089570~exp=1741093170~hmac=50bb576b29641521393c9f91b5e4159c9d0ad0b47bc83ea702ffc98e1fd84601&w=2000');
     justify-content: space-evenly;
     align-items: center;
+    background-image: url('./bgImg.jpg');
     background-position-x: center; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .winner_display h1{
@@ -40,9 +45,9 @@
 
 #winner_name{
     font-size: 80px;
-    color: aliceblue;
+    color: black;
     font-weight: 700;
-    background-color: black;
+    background-color: aliceblue;
     border-radius: 5px;
 }
 
@@ -53,8 +58,8 @@
     margin-bottom: 5rem;
     color: black;
     background-color: aliceblue;
-    width: 250px;
-    margin-left: 40%;
+    width: 350px;
+    margin-left: 35%;
     border: 2px solid black;
 }
 
@@ -152,8 +157,9 @@
     position: relative;
     margin: 5px;
     border-radius: 10px;
-    background-color: black;
+    background-color: aliceblue;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    margin-bottom: 10rem;
 }
 
 .dice-dot{
@@ -161,7 +167,7 @@
     --left:0%;
     width: 15px;
     height: 15px;
-    background-color: aliceblue;
+    background-color: black;
     border-radius: 50%;
 
     /* positioning */
@@ -182,17 +188,17 @@
 }
 
 .active1{
-    background-color: greenyellow;
+    background-color: orange;
 }
 
 .active2{
     /* background-color: rgba(0, 174, 255, 0.986); */
     /* background-color: greenyellow; */
-    color: greenyellow;
+    color: orange;
  }
 
 .button:hover{
-    background-color: pink;
+    background-color: orange;
 }
 
 .current_score_section{
@@ -205,4 +211,5 @@
     margin-top: 10px;
     font-weight: 700;
     font-size: large;
+    color: aliceblue;
 }
