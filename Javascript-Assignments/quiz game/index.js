@@ -1,3 +1,4 @@
+// to find out category code for different categories 
 const category_map = new Map([
     ["", null],
     ["General Knowledge", 9], 
@@ -8,36 +9,36 @@ const category_map = new Map([
     ["Video Games", 15],
     ["Mythology", 20] ]);
 
+// to store the category and level selected by the user
 let level = ""; 
 let category = "";
 let category_code = null;
 let url = "";
+// to store the index of the question
 let index = 0;
 let score = 0;
 let question_no = 1;
 
-const nextEl = document.querySelector('#next');
+
 const categoryEls = document.querySelector('#categories');
-
+// to get the category selected by the user
 categoryEls.addEventListener('change', (e) => {
-
     category = e.target.value;  
     category_code = category_map.get(category);
     console.log(category_code);
-
 })
+
 
 const levelEls = document.querySelector('#levels');
-
+// to get the level selected by the user
 levelEls.addEventListener('change', (e) => {
-
     level = e.target.value;  
     console.log(level);
-
 })
 
-const start_btnEl = document.querySelector('#start_btn');
 
+const start_btnEl = document.querySelector('#start_btn');
+// to start the quiz
 start_btnEl.addEventListener("click", () => {
     if(category_code !== null && level !== ""){
         url = `https://opentdb.com/api.php?amount=10&category=${category_code}&difficulty=${level}&type=multiple`; 
@@ -48,6 +49,7 @@ start_btnEl.addEventListener("click", () => {
     }
 })
 
+// to get the questions from the api
 async function get_questions(){
     try{
         const response = await fetch(url);
@@ -60,10 +62,11 @@ async function get_questions(){
         alert("error message : ", e);
     }
 }
+
+
 let interval;
-
 const timerEl = document.querySelector('#timer');
-
+// to show the countdown timer
 function showCountDown(questions_array, index){
     let time = 14;
     interval = setInterval(() => {
@@ -77,10 +80,13 @@ function showCountDown(questions_array, index){
 
 }
 
+
 const end_screen_containerEl = document.querySelector('.end_screen_container');
 const final_scoreEl = document.querySelector('#final_score');
 const containerEl = document.querySelector('.container');
+const nextEl = document.querySelector('#next');
 
+// to display the questions
 function display_questions(data){
     const questions_array = data.results;
     containerEl.classList.add('deactivate');
@@ -90,7 +96,9 @@ function display_questions(data){
     const question_containerEl = document.querySelector('.question_container');
     question_containerEl.classList.add('active_any_container');
 
+    display_single_question(questions_array, questionsEl, index);
 
+    // to move to the next question
     nextEl.addEventListener( 'click', () => {
         clearInterval(interval);
         index++;
@@ -103,17 +111,15 @@ function display_questions(data){
         else display_single_question(questions_array, questionsEl, index);
     })
 
-    display_single_question(questions_array, questionsEl, index);
-
 }
-const scoreEl = document.querySelector('#score');
 
+// to display a single question
 function display_single_question(questions_array, questionsEl, index){
 
     nextEl.disabled = true;
     nextEl.classList.add('disabled');
-    timerEl.innerText = 15;
 
+    timerEl.innerText = 15;
     showCountDown(questions_array, index);
 
     const question_div = document.createElement('div');
@@ -131,6 +137,39 @@ function display_single_question(questions_array, questionsEl, index){
     questionsEl.appendChild(answer_div);
 
     const optionsEls = document.querySelectorAll('.options');
+    selectOption(optionsEls, questions_array, index);
+
+}
+
+// to display the options
+function display_options(questions_array, answer_div, index){
+
+    const ans_array = questions_array[index].incorrect_answers;
+    ans_array.push(questions_array[index].correct_answer);
+
+    // to shuffle the options
+    const set = new Set();
+    while(set.size < 4){
+        set.add(Math.floor(Math.random() * 4))
+    }
+    console.log(set)
+
+    // to display the options
+    let n = 0;
+    for(const value of set){
+        const option = document.createElement('p');
+        option.innerText = ans_array[value];
+        n++;
+        option.classList.add('options');
+        answer_div.appendChild(option);
+
+    }
+}
+
+
+const scoreEl = document.querySelector('#score');
+// to select the option
+function selectOption(optionsEls, questions_array, index){
     let clicked = false;
     optionsEls.forEach( (option) => {
         option.addEventListener("click", (e) => {
@@ -146,28 +185,7 @@ function display_single_question(questions_array, questionsEl, index){
     })
 }
 
-function display_options(questions_array, answer_div, index){
-
-    const ans_array = questions_array[index].incorrect_answers;
-    ans_array.push(questions_array[index].correct_answer);
-
-    const set = new Set();
-    while(set.size < 4){
-        set.add(Math.floor(Math.random() * 4))
-    }
-    console.log(set)
-
-    let n = 0;
-    for(const value of set){
-        const option = document.createElement('p');
-        option.innerText = ans_array[value];
-        n++;
-        option.classList.add('options');
-        answer_div.appendChild(option);
-
-    }
-}
-
+// to set the colors of the options
 function setColors(questions_array, index, e){
     const optionsEls = document.querySelectorAll('.options');
     optionsEls.forEach((option) => {
@@ -185,8 +203,9 @@ function setColors(questions_array, index, e){
     clearInterval(interval);
 }
 
-const play_again_btnEl = document.querySelector('#play_again');
 
+const play_again_btnEl = document.querySelector('#play_again');
+// to play the quiz again
 play_again_btnEl.addEventListener('click', () => {
     location.reload();
 })
