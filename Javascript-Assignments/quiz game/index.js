@@ -59,7 +59,7 @@ async function get_questions(){
     }
     catch(e){
         location.reload();
-        alert("error message : ", e);
+        alert("Problem in API response press ok to Refresh");
     }
 }
 
