@@ -106,7 +106,7 @@ function display_questions(data){
         if(index > 9){
             question_containerEl.classList.remove('active_any_container');
             end_screen_containerEl.classList.add('active_any_container');
-            final_scoreEl.innerText = `${score} / 15`;
+            final_scoreEl.innerText = `${score} / 10`;
         }
         else display_single_question(questions_array, questionsEl, index);
     })
