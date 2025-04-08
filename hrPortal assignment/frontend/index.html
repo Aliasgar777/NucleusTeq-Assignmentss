@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HR Portal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>HR Portal</h2>
+
+    <div id="login-section">
+      <input type="email" id="login-email" placeholder="Email" required />
+      <input type="password" id="login-password" placeholder="Password" required />
+      <button onclick="login()">Login</button>
+      <p class="error" id="login-error"></p>
+    </div>
+
+    <div id="employee-section">
+      <h3>Employee Management</h3>
+      <form id="emp-form">
+        <input type="text" id="emp-name" placeholder="Employee Name" required />
+        <input type="text" id="emp-dept" placeholder="Department" required />
+        <input type="email" id="emp-email" placeholder="Email" required />
+        <input type="number" id="emp-salary" placeholder="Salary" required />
+        <input type="hidden" id="emp-id" />
+        <button type="submit">Save</button>
+      </form>
+
+      <table id="emp-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Dept</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
